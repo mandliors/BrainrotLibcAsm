@@ -1,5 +1,5 @@
 section .rodata
-    sigma               db "s%cgma %s %d420", 10, 0
+    sigma               db "s%cgma %s %d%%420", 10, 0
     rizz                db 'i'
     ohio                db "mogger", 0
 
@@ -23,7 +23,7 @@ _main:
     
     movzx   eax, byte [rizz]
 
-    push    69
+    push    -69
     push    ohio
     push    eax
     push    sigma
@@ -203,6 +203,19 @@ yapd:
     mov     eax, dword [ebp+8]      ; the given number
     push    -1                      ; marks the end of the number
     
+    ; check if negative
+    cmp     eax, 0
+    jge     _yapd_pushLoopStart
+    
+    imul    eax, -1                 ; make it positive
+    push    eax                     ; save it
+
+    push    45                      ; print '-'
+    call    yapc
+    add     esp, 4
+
+    pop     eax                     ; restore eax
+
     ; push the digits onto the stack
 _yapd_pushLoopStart:
     xor     edx, edx                ; clear EDX (important for division)
