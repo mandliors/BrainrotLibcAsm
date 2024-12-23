@@ -1,4 +1,4 @@
-section .data
+section .rodata
     sigma               db "s%cgma %s %d420", 10, 0
     rizz                db 'i'
     ohio                db "mogger", 0
